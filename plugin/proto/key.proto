@@ -1,0 +1,45 @@
+syntax = "proto3";
+package jwt;
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+
+message Key {
+  string name = 1;
+  uint32 current_version = 2;
+  map<uint32, Version> versions = 3;
+
+  string issuer = 4;
+  string audience = 5;
+  string authorized_party = 6;
+  google.protobuf.Duration ttl = 7;
+  map<string, string> claims = 8;
+  uint32 key_size = 9;
+  HashAlgorithm hash_algorithm = 10;
+  SignatureAlgorithm signature_algorithm = 11;
+  uint32 max_versions = 12;
+  bool deletable = 14;
+  bool exportable = 15;
+
+  google.protobuf.Timestamp created_at = 20;
+  google.protobuf.Timestamp updated_at = 21;
+}
+
+message Version {
+  bytes public_key = 1;
+  bytes private_key = 2;
+
+  google.protobuf.Timestamp created_at = 20;
+  google.protobuf.Timestamp deleted_at = 21;
+}
+
+enum HashAlgorithm {
+  sha256 = 0;
+  sha384 = 1;
+  sha512 = 2;
+}
+
+enum SignatureAlgorithm {
+  pkcs = 0;
+  pss = 1;
+}
