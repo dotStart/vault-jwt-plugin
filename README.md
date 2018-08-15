@@ -27,7 +27,7 @@ vault server -dev -dev-plugin-dir=/my/plugin/dir
 The backend may be mounted via the command line using the `secrets` command:
 
 ```
-vault secrets enable -plugin-name=jwt-backend -plugin-path=jwt plugin
+vault secrets enable -plugin-name=jwt-backend -path=jwt plugin
 ```
 
 Prerequisites
