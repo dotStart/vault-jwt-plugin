@@ -28,3 +28,7 @@
 
 
 # End of https://www.gitignore.io/api/go,Vagrant
+
+### Project Specific ###
+build/
+*-console.log
